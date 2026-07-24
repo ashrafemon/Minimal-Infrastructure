@@ -1,12 +1,9 @@
 services:
   redis:
     image: redis:7
+    entrypoint: ["/bin/sh", "-c"]
     command:
-      - "redis-server"
-      - "--appendonly"
-      - "yes"
-      - "--requirepass"
-      - "$(cat /run/secrets/redis_password)"
+      - "redis-server --appendonly yes --requirepass \"$(cat /run/secrets/redis_password)\""
     secrets:
       - redis_password
     ports:

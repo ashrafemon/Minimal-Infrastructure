@@ -7,30 +7,27 @@ mkdir -p "$SECRETS_DIR"
 echo "🔐 Generating secrets..."
 
 # Database credentials
-echo "leafwrap" > "$SECRETS_DIR/db_username"
-openssl rand -base64 32 > "$SECRETS_DIR/db_password"
-openssl rand -base64 32 > "$SECRETS_DIR/db_root_password"
+printf '%s' "leafwrap" > "$SECRETS_DIR/db_username"
+openssl rand -base64 32 | tr -d '\n' > "$SECRETS_DIR/db_password"
+openssl rand -base64 32 | tr -d '\n' > "$SECRETS_DIR/db_root_password"
 
 # Redis
-openssl rand -base64 32 > "$SECRETS_DIR/redis_password"
+openssl rand -base64 32 | tr -d '\n' > "$SECRETS_DIR/redis_password"
 
 # RabbitMQ
-echo "admin" > "$SECRETS_DIR/rabbitmq_user"
-openssl rand -base64 32 > "$SECRETS_DIR/rabbitmq_password"
+printf '%s' "admin" > "$SECRETS_DIR/rabbitmq_user"
+openssl rand -base64 32 | tr -d '\n' > "$SECRETS_DIR/rabbitmq_password"
 
 # pgAdmin
-openssl rand -base64 32 > "$SECRETS_DIR/pgadmin_password"
-
-# Grafana
-openssl rand -base64 32 > "$SECRETS_DIR/grafana_password"
+openssl rand -base64 32 | tr -d '\n' > "$SECRETS_DIR/pgadmin_password"
 
 # Arcane
-openssl rand -base64 32 > "$SECRETS_DIR/arcane_encryption_key"
-openssl rand -base64 32 > "$SECRETS_DIR/arcane_jwt_secret"
+openssl rand -base64 32 | tr -d '\n' > "$SECRETS_DIR/arcane_encryption_key"
+openssl rand -base64 32 | tr -d '\n' > "$SECRETS_DIR/arcane_jwt_secret"
 
 # MinIO
-echo "minioadmin" > "$SECRETS_DIR/minio_root_user"
-openssl rand -base64 32 > "$SECRETS_DIR/minio_root_password"
+printf '%s' "minioadmin" > "$SECRETS_DIR/minio_root_user"
+openssl rand -base64 32 | tr -d '\n' > "$SECRETS_DIR/minio_root_password"
 
 chmod 600 "$SECRETS_DIR"/*
 
