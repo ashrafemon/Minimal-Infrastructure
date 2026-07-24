@@ -9,6 +9,7 @@ services:
       DB_SQLITE_FILE: /data/database.sqlite
     volumes:
       - npm_data:/data
+      - ./nginx/ssl:/etc/letsencrypt
     networks:
       - app_network
     restart: always

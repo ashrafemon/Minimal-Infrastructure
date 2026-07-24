@@ -71,6 +71,29 @@ A complete local development and production environment with databases, messagin
    docker compose ps
    ```
 
+## Pre-pull Images
+
+To avoid timeout issues during `docker compose up`, pre-pull all required images:
+
+```bash
+docker pull dpage/pgadmin4
+docker pull rabbitmq:4-management
+docker pull tecnativa/docker-socket-proxy:latest
+docker pull axllent/mailpit:latest
+docker pull mysql:9.3
+docker pull redis:7
+docker pull redis/redisinsight:latest
+docker pull offen/docker-volume-backup:latest
+docker pull louislam/uptime-kuma:latest
+docker pull minio/minio:latest
+docker pull postgres:16
+docker pull mongo:8.0.15
+docker pull phpmyadmin:latest
+docker pull ghcr.io/getarcaneapp/manager:latest
+docker pull jc21/nginx-proxy-manager:latest
+docker pull aquasec/trivy:0.63.0
+```
+
 ## Directory Structure
 
 ```
