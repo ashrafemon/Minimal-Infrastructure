@@ -1,0 +1,59 @@
+services:
+  redis:
+    image: redis:7
+    command:
+      - "redis-server"
+      - "--appendonly"
+      - "yes"
+      - "--requirepass"
+      - "$(cat /run/secrets/redis_password)"
+    secrets:
+      - redis_password
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_data:/data
+    networks:
+      - app_network
+    restart: always
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "redis-cli --no-auth-warning -a $$(cat /run/secrets/redis_password) ping || exit 1",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+          cpus: "0.25"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  redis-insight:
+    image: redis/redisinsight:latest
+    ports:
+      - 6789:5540
+    depends_on:
+      - redis
+    volumes:
+      - redisinsight_data:/db
+    networks:
+      - app_network
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+          cpus: "0.25"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

@@ -1,0 +1,30 @@
+services:
+  backup:
+    image: offen/docker-volume-backup:latest
+    environment:
+      - BACKUP_CRON_EXPRESSION=0 2 * * *
+      - BACKUP_RETENTION_DAYS=7
+      - BACKUP_FILENAME=backup-%Y-%m-%d.tar.gz
+    volumes:
+      - mysql_data:/backup/mysql_data:ro
+      - redis_data:/backup/redis_data:ro
+      - mongo_data:/backup/mongo_data:ro
+      - postgres_data:/backup/postgres_data:ro
+      - rabbitmq_data:/backup/rabbitmq_data:ro
+      - mailpit_data:/backup/mailpit_data:ro
+      - minio_data:/backup/minio_data:ro
+      - arcane_data:/backup/arcane_data:ro
+      - ./backups:/backup/backups
+    networks:
+      - app_network
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 128m
+          cpus: "0.1"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

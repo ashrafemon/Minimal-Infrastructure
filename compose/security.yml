@@ -1,0 +1,22 @@
+services:
+  trivy:
+    image: aquasec/trivy:0.63.0
+    ports:
+      - "4954:4954"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - trivy_data:/root/.cache
+    command: server --listen :4954
+    networks:
+      - app_network
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+          cpus: "0.5"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
