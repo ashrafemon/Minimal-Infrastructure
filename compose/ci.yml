@@ -31,11 +31,6 @@ services:
     networks:
       - app_network
     restart: always
-    deploy:
-      resources:
-        limits:
-          memory: 128m
-          cpus: "0.1"
     logging:
       driver: json-file
       options:
@@ -58,11 +53,6 @@ services:
     depends_on:
       - docker-socket-proxy
     restart: always
-    deploy:
-      resources:
-        limits:
-          memory: 1g
-          cpus: "0.5"
     logging:
       driver: json-file
       options:

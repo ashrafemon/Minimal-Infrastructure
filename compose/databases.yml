@@ -25,11 +25,6 @@ services:
     networks:
       - app_network
     restart: always
-    deploy:
-      resources:
-        limits:
-          memory: 512m
-          cpus: "0.5"
     logging:
       driver: json-file
       options:
@@ -61,11 +56,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
-    deploy:
-      resources:
-        limits:
-          memory: 512m
-          cpus: "0.5"
     logging:
       driver: json-file
       options:
@@ -96,11 +86,6 @@ services:
       retries: 5
     networks:
       - app_network
-    deploy:
-      resources:
-        limits:
-          memory: 512m
-          cpus: "0.5"
     logging:
       driver: json-file
       options:
