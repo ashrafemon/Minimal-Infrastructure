@@ -26,6 +26,7 @@ services:
       - SYSTEM=0
       - TASKS=0
       - VOLUMES=1
+      - TAGS=1
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
