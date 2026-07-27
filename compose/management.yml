@@ -12,6 +12,11 @@ services:
     networks:
       - app_network
     restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+          cpus: "0.25"
     logging:
       driver: json-file
       options:
@@ -21,6 +26,11 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+          cpus: "0.25"
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@example.com
       PGADMIN_DEFAULT_PASSWORD_FILE: /run/secrets/pgadmin_password
@@ -59,6 +69,11 @@ services:
     networks:
       - app_network
     restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+          cpus: "0.25"
     logging:
       driver: json-file
       options:

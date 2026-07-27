@@ -18,6 +18,11 @@ services:
     networks:
       - app_network
     restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 128m
+          cpus: "0.1"
     logging:
       driver: json-file
       options:

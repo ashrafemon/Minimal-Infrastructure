@@ -13,6 +13,11 @@ services:
     networks:
       - app_network
     restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+          cpus: "0.25"
     healthcheck:
       test:
         [
@@ -39,6 +44,11 @@ services:
     networks:
       - app_network
     restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+          cpus: "0.25"
     logging:
       driver: json-file
       options:
