@@ -54,6 +54,7 @@ services:
       - jenkins_data:/var/jenkins_home
     environment:
       - DOCKER_HOST=tcp://jenkins-docker-proxy:2375
+      - DOCKER_BUILDKIT=0
     networks:
       - app_network
     depends_on:
