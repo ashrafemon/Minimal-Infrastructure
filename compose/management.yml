@@ -1,7 +1,7 @@
 services:
   phpmyadmin:
     image: phpmyadmin:latest
-    container_name: minimal-infrastructure-phpmyadmin-1
+    container_name: phpmyadmin
     environment:
       - PMA_ARBITRARY=1
       - UPLOAD_LIMIT=300M
@@ -26,7 +26,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: minimal-infrastructure-pgadmin-1
+    container_name: pgadmin
     restart: always
     deploy:
       resources:
@@ -54,7 +54,7 @@ services:
 
   arcane:
     image: ghcr.io/getarcaneapp/manager:latest
-    container_name: minimal-infrastructure-arcane-1
+    container_name: arcane
     ports:
       - "3552:3552"
     environment:

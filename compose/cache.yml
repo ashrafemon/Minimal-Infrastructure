@@ -1,7 +1,7 @@
 services:
   redis:
     image: redis:7
-    container_name: minimal-infrastructure-redis-1
+    container_name: redis
     entrypoint: ["/bin/sh", "-c"]
     command:
       - "redis-server --appendonly yes --requirepass \"$(cat /run/secrets/redis_password)\""
@@ -36,7 +36,7 @@ services:
 
   redis-insight:
     image: redis/redisinsight:latest
-    container_name: minimal-infrastructure-redis-insight-1
+    container_name: redis-insight
     ports:
       - 6789:5540
     depends_on:

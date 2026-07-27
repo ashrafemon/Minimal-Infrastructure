@@ -1,7 +1,7 @@
 services:
   mysql:
     image: mysql:9.3
-    container_name: minimal-infrastructure-mysql-1
+    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
       MYSQL_USER_FILE: /run/secrets/db_username
@@ -39,7 +39,7 @@ services:
 
   mongodb:
     image: mongo:8.0.15
-    container_name: minimal-infrastructure-mongodb-1
+    container_name: mongodb
     restart: always
     deploy:
       resources:
@@ -76,7 +76,7 @@ services:
 
   postgres:
     image: postgres:16
-    container_name: minimal-infrastructure-postgres-1
+    container_name: postgres
     restart: always
     deploy:
       resources:

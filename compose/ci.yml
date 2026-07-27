@@ -44,7 +44,7 @@ services:
         max-file: "3"
 
   jenkins:
-    container_name: minimal-infrastructure-jenkins-1
+    container_name: jenkins
     build:
       context: ../jenkins
       dockerfile: Dockerfile

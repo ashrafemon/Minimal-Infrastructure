@@ -1,7 +1,7 @@
 services:
   nginx-proxy-manager:
     image: jc21/nginx-proxy-manager:latest
-    container_name: minimal-infrastructure-nginx-proxy-manager-1
+    container_name: nginx-proxy-manager
     ports:
       - "80:80"
       - "443:443"

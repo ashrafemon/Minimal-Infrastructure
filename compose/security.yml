@@ -1,7 +1,7 @@
 services:
   trivy:
     image: aquasec/trivy:0.63.0
-    container_name: minimal-infrastructure-trivy-1
+    container_name: trivy
     ports:
       - "4954:4954"
     volumes:
