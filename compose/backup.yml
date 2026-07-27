@@ -1,6 +1,7 @@
 services:
   backup:
     image: offen/docker-volume-backup:latest
+    container_name: minimal-infrastructure-backup-1
     environment:
       - BACKUP_CRON_EXPRESSION=0 2 * * *
       - BACKUP_RETENTION_DAYS=7

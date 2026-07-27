@@ -1,4 +1,8 @@
 secrets/*
 !secrets/README.md
-/compose/nginx/ssl/*
-/compose/backups/*
+
+# Backup archives
+compose/backups/
+
+# SSL certificates
+compose/nginx/ssl/

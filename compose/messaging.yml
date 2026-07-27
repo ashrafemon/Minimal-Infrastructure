@@ -1,6 +1,7 @@
 services:
   rabbitmq:
     image: rabbitmq:4-management
+    container_name: minimal-infrastructure-rabbitmq-1
     restart: always
     command:
       - /bin/sh

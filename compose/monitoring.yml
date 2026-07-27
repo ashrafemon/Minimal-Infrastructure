@@ -1,6 +1,7 @@
 services:
   uptime-kuma:
     image: louislam/uptime-kuma:latest
+    container_name: minimal-infrastructure-uptime-kuma-1
     ports:
       - "3001:3001"
     volumes:
